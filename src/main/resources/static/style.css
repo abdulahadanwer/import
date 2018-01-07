@@ -1,0 +1,39 @@
+body {
+background-color: #cccccc;
+font-family: arial,helvetica,sans-serif;
+}
+.colorHeadline {
+font-size: 12pt;
+font-weight: bold;
+}
+.errorColorDescription {
+font-size: 10pt;
+color: #ff0000;
+}
+label {
+font-weight: bold;
+}
+.successMsg {
+background: #00ff80;
+padding: 5px;
+margin: 10px 0;
+text-align: center;
+}
+.failureMsg {
+background: #ff0000;
+padding: 5px;
+margin: 10px 0;
+text-align: center;
+}
+.warningMsg {
+background: #ff8000;
+padding: 5px;
+margin: 10px 0;
+text-align: center;
+}
+.footer {
+background: #c0c0c0;
+padding: 5px;
+margin: 10px 0;
+text-align: center;
+}

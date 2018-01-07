@@ -1,0 +1,15 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<title>Undeveloped Product</title>
+		<link rel="stylesheet" th:href="@{/style.css}"></link>
+	</head>
+	<body>
+		<div th:include="header :: header"></div>
+		<a th:href="@{/getProduct/nm}">Back</a><br></br>
+		<h2>Screens have not yet been developed for the following product</h2>
+		<div><p th:text="${product.productName}">Product Name</p></div>
+		
+		<div class="footer" th:include="footer :: site-footer"></div>
+	</body>
+</html>

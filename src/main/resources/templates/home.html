@@ -1,0 +1,17 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+
+ <head>
+		<title>Edge Garments</title>
+		<link rel="stylesheet" th:href="@{/style.css}"></link>
+ </head>
+
+  <body>
+  	<div th:include="header :: header"></div>
+  	<h2>Welcome to our Edge store!</h2>
+    <p>Find below links to important resources</p>
+  	<a th:href="@{/inventory}">Inventory</a>
+  	<div class="footer" th:include="footer :: site-footer"></div>
+  </body>
+
+</html>

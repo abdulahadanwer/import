@@ -1,0 +1,73 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<title>Add a Product to the Inventory</title>
+		<link rel="stylesheet" th:href="@{/style.css}"></link>
+	</head>
+	<body>
+		<div th:include="header :: header"></div>
+		<a th:href="@{/inventory}">Back</a><br></br>
+		<h2>Products in the Inventory</h2>
+		<div th:unless="${#lists.isEmpty(productsList)}">
+			 <table border="2">
+			 	<thead>
+			      <tr>
+			        <th>PRODUCT CODE</th>
+			        <th>PRODUCT NAME</th>
+			        <th>PRODUCT SHORT DESCRIPTION</th>
+			        <th>PRODUCT LONG DESCRIPTION</th>
+			      </tr>
+			     </thead>
+			     <tbody>
+				     <tr th:each="product : ${productsList}">
+				        <td th:text="${product.productCd}">Product Code</td>
+				        <td><a th:text="${product.productName}" th:href="@{/updateProduct/{productCd}(productCd=${product.productCd})}"></a></td>
+				        <td th:text="${product.productShortDesc}">Product Short Description</td>
+				        <td th:text="${product.productLongDesc}">Product Long Description</td>
+				      </tr>
+				  </tbody>
+		    </table>
+		</div>
+		<div th:if="${#lists.isEmpty(productsList)}">
+			<p>There is no Product in the inventory</p>
+		</div>
+		<br></br>
+		<hr></hr>
+		<div th:if="${not #strings.isEmpty(success)}">
+			<p class="successMsg" th:text="${success}"></p>
+		</div>
+		<div th:if="${not #strings.isEmpty(failure)}">
+			<p class="failureMsg" th:text="${failure}"></p>
+		</div>
+		<div th:if="${not #strings.isEmpty(alreadyExisting)}">
+			<p class="warningMsg" th:text="${alreadyExisting}"></p>
+		</div>
+		<h3>Add a new Product</h3>
+			 <form action="#" th:action="@{/addProduct}" th:object="${product}" method="post">
+	            <table>
+	                <tr>
+	                    <td>Product Code* (min 1, max 2 char.):</td>
+	                    <td><input type="text" th:field="*{productCd}" /></td>
+	                    <td th:if="${#fields.hasErrors('productCd')}" th:errors="*{productCd}" class="errorColorDescription">Error with product Code</td>
+	                </tr>
+	                <tr>
+	                    <td>Product Name* (min 1, max 45 char.):</td>
+	                    <td><input type="text" th:field="*{productName}" /></td>
+	                    <td th:if="${#fields.hasErrors('productName')}" th:errors="*{productName}" class="errorColorDescription">Error with product name</td>
+	                </tr>
+	                <tr>
+	                    <td>Short Description* (min 1, max 45 chars.):</td>
+	                    <td><input type="text" th:field="*{productShortDesc}" /></td>
+	                    <td th:if="${#fields.hasErrors('productShortDesc')}" th:errors="*{productShortDesc}" class="errorColorDescription">Error with Short Description</td>
+	                </tr>
+	                 <tr>
+	                    <td>Long Description* (min 1, max 60 char):</td>
+	                    <td><input type="text" th:field="*{productLongDesc}" /></td>
+	                    <td th:if="${#fields.hasErrors('productLongDesc')}" th:errors="*{productLongDesc}" class="errorColorDescription">Error with Long Description</td>
+	                </tr>
+	            </table>
+	            <button type="submit">Submit</button>
+        	</form>
+		<div class="footer" th:include="footer :: site-footer"></div>
+	</body>
+</html>
